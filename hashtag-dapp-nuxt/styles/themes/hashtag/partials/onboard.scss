@@ -1,0 +1,82 @@
+body {
+  aside {
+    &.svelte-rntogh {
+      background: $modal-background-background-color;
+    }
+  }
+}
+
+.bn-onboard-custom {
+  &.bn-onboard-modal {
+    font-family: $body-family !important;
+  }
+
+  .bn-onboard-modal-content {
+    background-color: $grey-dark;
+    color: $white-ter;
+    border-radius: $radius-large;
+    max-width: 510px;
+
+    .bn-onboard-modal-content-header-icon {
+      display: none;
+    }
+
+    .bn-onboard-modal-select-wallets {
+      background-color: $grey;
+      border-radius: $radius-large;
+    }
+
+    .bn-onboard-modal-content-header-heading {
+      font-weight: normal;
+      font-size: 1.5rem;
+      margin-left: 0;
+    }
+
+    .bn-onboard-icon-button {
+      width: unset;
+      border-radius: 4px;
+      margin: 1.25em;
+      padding: 0;
+
+      span {
+        font-weight: normal;
+      }
+
+      &:hover {
+        box-shadow: unset;
+      }
+    }
+
+    .bn-onboard-select-wallet-info,
+    .bn-onboard-clickable {
+      color: $primary !important;
+
+      &:hover {
+        //color: $white !important;
+        text-decoration: underline;
+      }
+    }
+
+    .bn-onboard-prepare-button {
+      border-radius: $radius-large;
+      columns: $primary;
+      border-color: $primary;
+      color: $primary;
+    }
+  }
+
+  .checkbox,
+  .radio {
+    &:hover {
+      color: inherit;
+    }
+
+    .control-label {
+      font-size: $size-6;
+
+      a:hover {
+        color: $primary;
+      }
+    }
+  }
+}

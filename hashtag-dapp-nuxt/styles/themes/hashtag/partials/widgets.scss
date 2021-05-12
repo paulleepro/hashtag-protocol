@@ -1,0 +1,13 @@
+.hashtag-mint {
+  span.new-hashtag {
+    opacity: 1;
+    color: $grey-dark;
+    font-size: 1rem;
+  }
+}
+
+a.dropdown-item:hover,
+.dropdown .dropdown-menu .has-link a:hover,
+button.dropdown-item:hover {
+  text-decoration: none;
+}

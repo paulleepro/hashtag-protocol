@@ -1,0 +1,10 @@
+{
+  "1": {
+    "Name": "Mainnet",
+    "url": "https://etherscan.io"
+  },
+  "4": {
+    "Name": "Rinkby",
+    "url": "https://rinkeby.etherscan.io"
+  }
+}

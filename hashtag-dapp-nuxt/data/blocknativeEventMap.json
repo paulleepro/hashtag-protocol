@@ -1,0 +1,30 @@
+{
+  "txSent": {
+    "msg": "Transaction has been sent to the network",
+    "type": "is-dark"
+  },
+  "txPool": {
+    "msg": "Transaction is in the mempool and is pending",
+    "type": "is-dark"
+  },
+  "txConfirmed": {
+    "msg": "Transaction has been mined",
+    "type": "is-success"
+  },
+  "txFailed": {
+    "msg": "Transaction has failed",
+    "type": "is-danger"
+  },
+  "txSpeedUp": {
+    "msg": "Transaction been speeded up",
+    "type": "is-dark"
+  },
+  "txCancel": {
+    "msg": "Transaction been cancelled",
+    "type": "is-warning"
+  },
+  "txDropped": {
+    "msg": "Transaction been dropped",
+    "type": "is-warning"
+  }
+}
