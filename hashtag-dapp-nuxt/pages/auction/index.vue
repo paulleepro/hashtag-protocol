@@ -34,7 +34,7 @@
               </p>
 
               <div class="coming-soon-img is-hidden-touch">
-                <img src="../assets/coming-soon-banner.png" />
+                <img src="../../assets/coming-soon-banner.png" />
               </div>
             </article>
           </div>
@@ -46,11 +46,22 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import MarkdownDoc from "../components/MarkdownDoc";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import MarkdownDoc from "../../components/MarkdownDoc";
 
 export default {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
   name: "Nfts",
   components: {
     Footer,

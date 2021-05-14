@@ -110,14 +110,14 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import Hashtag from "../components/Hashtag";
-import Header from "../components/Header";
-import NftLink from "../components/NftLink";
-import Pagination from "../components/Pagination";
-import TimestampFrom from "../components/TimestampFrom";
-import { PAGED_TAGS, ALL_TAG_IDS } from "../queries";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Hashtag from "~/components/Hashtag";
+import Header from "~/components/Header";
+import NftLink from "~/components/NftLink";
+import Pagination from "~/components/Pagination";
+import TimestampFrom from "~/components/TimestampFrom";
+import { PAGED_TAGS, ALL_TAG_IDS } from "~/queries";
 
 const PAGE_SIZE = 10;
 
@@ -131,6 +131,17 @@ export default {
     NftLink,
     Pagination,
     TimestampFrom,
+  },
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
   },
   data() {
     return {

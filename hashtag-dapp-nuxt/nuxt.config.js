@@ -17,11 +17,20 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/theme',
+    '~/assets/css/variables',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/index.js',
+    {src: '~/plugins/buefy.js', mode: 'client'},
+    {src: '~/plugins/filters.js', mode: 'client'},
+    {src: '~/plugins/vue-apollo.js', mode: 'client'},
+    {src: '~/plugins/vue-axios.js', mode: 'client'},
+    {src: '~/plugins/vue-gtm.js', mode: 'client'},
+    {src: '~/plugins/vue-moment.js', mode: 'client'},
+    {src: '~/plugins/vue-screen.js', mode: 'client'},
+    {src: '~/plugins/index.js', mode: 'client'},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

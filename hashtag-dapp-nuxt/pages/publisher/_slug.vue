@@ -317,21 +317,21 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
 import {
   ALL_HASHTAG_IDS_BY_PUBLISHER,
   PAGED_HASHTAGS_BY_PUBLISHER,
   PUBLISHER_BY_ACC,
   ALL_TAG_IDS_BY_PUBLISHER,
   PAGED_TAGS_BY_PUBLISHER,
-} from "../queries";
-import EthAmount from "../components/EthAmount";
-import Hashtag from "../components/Hashtag";
-import NftLink from "../components/NftLink";
-import Pagination from "../components/Pagination";
-import TimestampFrom from "../components/TimestampFrom";
+} from "~/queries";
+import EthAmount from "~/components/EthAmount";
+import Hashtag from "~/components/Hashtag";
+import NftLink from "~/components/NftLink";
+import Pagination from "~/components/Pagination";
+import TimestampFrom from "~/components/TimestampFrom";
 import { mapGetters } from "vuex";
 import { ethers } from "ethers";
 
@@ -349,11 +349,22 @@ export default {
     Header,
     Pagination,
   },
-  data() {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData({ $content, params }) {
     return {
       activeTab: null,
       hashtagsByName: null,
-      publisher: this.$route.params.address,
+      publisher: params.slug,
       tagsByHashtag: null,
       hashtagsTab: {
         pageSize: PAGE_SIZE,
@@ -438,7 +449,7 @@ export default {
         const filteredResults = this.publisherDirectory.filter(
           (publisher) =>
             ethers.utils.getAddress(publisher.address) ===
-            ethers.utils.getAddress(this.$route.params.address)
+            ethers.utils.getAddress(params.slug)
         );
         return filteredResults.length === 1 ? filteredResults[0] : null;
       }

@@ -184,19 +184,19 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import EthAmount from "../components/EthAmount";
-import Footer from "../components/Footer";
-import Hashtag from "../components/Hashtag";
-import Header from "../components/Header";
-import NftLink from "../components/NftLink";
-import Pagination from "../components/Pagination";
+import EthAccount from "~/components/EthAccount";
+import EthAmount from "~/components/EthAmount";
+import Footer from "~/components/Footer";
+import Hashtag from "~/components/Hashtag";
+import Header from "~/components/Header";
+import NftLink from "~/components/NftLink";
+import Pagination from "~/components/Pagination";
 import {
   TAGGER_BY_ACC,
   PAGED_TAGS_BY_TAGGER,
   ALL_TAG_IDS_BY_TAGGER,
-} from "../queries";
-import TimestampFrom from "../components/TimestampFrom";
+} from "~/queries";
+import TimestampFrom from "~/components/TimestampFrom";
 
 const PAGE_SIZE = 10;
 
@@ -212,10 +212,21 @@ export default {
     Pagination,
     TimestampFrom,
   },
-  data() {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData({ $content, params }) {
     return {
       activeTab: null,
-      tagger: this.$route.params.address,
+      tagger: params.slug,
       tagsByHashtag: null,
       hashtagsByName: null,
       pageSize: PAGE_SIZE,

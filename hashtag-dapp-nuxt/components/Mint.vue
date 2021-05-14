@@ -70,8 +70,8 @@
   </section>
 </template>
 <script>
-import { FIRST_THOUSAND_HASHTAGS } from "@/queries";
-import HashtagValidationService from "@/services/HashtagValidationService";
+import { FIRST_THOUSAND_HASHTAGS } from "~/queries";
+import HashtagValidationService from "~/services/HashtagValidationService";
 
 export default {
   name: "Hashtags",

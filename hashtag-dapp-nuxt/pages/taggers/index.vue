@@ -84,11 +84,11 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Pagination from "../components/Pagination";
-import { PAGED_TAGGERS, ALL_TAGGERS } from "../queries";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
+import Pagination from "~/components/Pagination";
+import { PAGED_TAGGERS, ALL_TAGGERS } from "~/queries";
 
 const PAGE_SIZE = 10;
 
@@ -100,7 +100,18 @@ export default {
     Header,
     Pagination,
   },
-  data() {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData() {
     return {
       activeTab: null,
       pageSize: PAGE_SIZE,

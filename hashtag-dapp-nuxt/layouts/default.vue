@@ -11,7 +11,7 @@
           href="/"
         >
           <img
-            src="~assets/buefy.png"
+            src="~/assets/buefy.png"
             alt="Buefy"
             height="28"
           >

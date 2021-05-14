@@ -3,9 +3,9 @@
     <Header />
     <section class="main">
       <div class="container">
-        <h1 class="title is-1">Publishers</h1>
+        <h1 class="title is-1">Hashtags</h1>
         <h2 class="subtitle">
-          Hashtag Protocol Publishers
+          Hashtag Protocol Tokens
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
             <router-link :to="{ name: 'dashboard' }">Dashboard</router-link
             >&nbsp;
@@ -27,25 +27,37 @@
                         <!---->
                         <th class="">
                           <div class="th-wrap">
+                            Hashtag
+                            <!---->
+                          </div>
+                        </th>
+                        <th class="">
+                          <div class="th-wrap">
+                            Created
+                            <!---->
+                          </div>
+                        </th>
+                        <th class="">
+                          <div class="th-wrap">
+                            Creator
+                            <!---->
+                          </div>
+                        </th>
+                        <th class="">
+                          <div class="th-wrap">
+                            Owner
+                            <!---->
+                          </div>
+                        </th>
+                        <th class="">
+                          <div class="th-wrap">
                             Publisher
                             <!---->
                           </div>
                         </th>
                         <th class="">
-                          <div class="th-wrap is-centered">
-                            Hashtags
-                            <!---->
-                          </div>
-                        </th>
-                        <th class="">
-                          <div class="th-wrap is-centered">
+                          <div class="th-wrap">
                             Tag count
-                            <!---->
-                          </div>
-                        </th>
-                        <th class="">
-                          <div class="th-wrap is-centered">
-                            Revenue
                             <!---->
                           </div>
                         </th>
@@ -54,44 +66,42 @@
                       <!---->
                       <!---->
                     </thead>
-                    <tbody v-if="pagedPublishers">
+                    <tbody v-if="pagedHashtags">
                       <tr
                         draggable="false"
                         class=""
-                        v-for="publisher in pagedPublishers"
-                        v-bind:key="publisher.id"
+                        v-for="hashtag in pagedHashtags"
+                        v-bind:key="hashtag.id"
                       >
                         <!---->
                         <!---->
-                        <td data-label="Owner" class="">
-                          <eth-account
-                            :value="publisher.id"
-                            route="publisher-detail"
-                          ></eth-account>
+                        <td data-label="Hashtag" class="">
+                          <hashtag :value="hashtag.displayHashtag"></hashtag>
                         </td>
-                        <td data-label="Hashtags" class="has-text-centered">
-                          {{ publisher.mintCount }}
+                        <td data-label="Minted" class="">
+                          <timestamp-from
+                            :value="hashtag.timestamp"
+                          ></timestamp-from>
                         </td>
-                        <td data-label="Tag count" class="has-text-centered">
-                          {{ publisher.tagCount }}
+                        <td data-label="Creator" class="">
+                          <eth-account :value="hashtag.creator"></eth-account>
                         </td>
-                        <td data-label="Revenue" class="has-text-centered">
-                          <eth-amount-sum
-                            :value1="publisher.mintFees"
-                            :value2="publisher.tagFees"
-                          ></eth-amount-sum>
+                        <td data-label="Owner" class="">Pending Auction</td>
+                        <td data-label="Publisher" class="">
+                          <eth-account :value="hashtag.publisher"></eth-account>
+                        </td>
+                        <td data-label="Count" class="">
+                          {{ hashtag.tagCount }}
                         </td>
                         <!---->
                       </tr>
-                      <!---->
-                      <!---->
                     </tbody>
                   </table>
                 </div>
                 <!---->
               </div>
               <Pagination
-                :entity-count="publishersCount"
+                :entity-count="hashtagCount"
                 :page-size="pageSize"
                 @tabSelected="tabSelected"
               />
@@ -105,23 +115,36 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import EthAmountSum from "../components/EthAmountSum";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Pagination from "../components/Pagination";
-import { PAGED_PUBLISHERS, ALL_PUBLISHERS } from "../queries";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Hashtag from "~/components/Hashtag";
+import Header from "~/components/Header";
+import Pagination from "~/components/Pagination";
+import TimestampFrom from "~/components/TimestampFrom";
+import { PAGED_HASHTAGS, ALL_HASHTAG_TOKEN_IDS } from "~/queries";
 
 const PAGE_SIZE = 10;
 
 export default {
   name: "Nfts",
   components: {
-    EthAmountSum,
     EthAccount,
+    TimestampFrom,
+    Hashtag,
     Footer,
     Header,
     Pagination,
+  },
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
   },
   data() {
     return {
@@ -129,12 +152,12 @@ export default {
       pageSize: PAGE_SIZE,
       first: PAGE_SIZE,
       skip: 0,
-      publishersCount: 0,
+      hashtagCount: 0,
     };
   },
   apollo: {
-    pagedPublishers: {
-      query: PAGED_PUBLISHERS,
+    pagedHashtags: {
+      query: PAGED_HASHTAGS,
       variables() {
         return {
           first: this.first,
@@ -142,11 +165,11 @@ export default {
         };
       },
     },
-    publishersCount: {
-      query: ALL_PUBLISHERS,
+    hashtagCount: {
+      query: ALL_HASHTAG_TOKEN_IDS,
       manual: true,
       result({ data }) {
-        this.publishersCount = data.publishers.length;
+        this.hashtagCount = data.hashtags.length;
       },
     },
   },

@@ -7,7 +7,7 @@
       <nav class="level box has-background-grey">
         <div class="level-item has-text-centered">
           <div>
-            <img src="../assets/logo-white.svg" width="45" />
+            <img src="~/assets/logo-white.svg" width="45" />
           </div>
         </div>
         <div class="level-item has-text-centered">

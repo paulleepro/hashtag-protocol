@@ -3,7 +3,7 @@
     <template slot="brand">
       <b-navbar-item :href="this.app">
         <img
-          src="../assets/logo-white.svg"
+          src="~/assets/logo-white.svg"
           alt="Content tagging for the decentralized web"
         />
         <h1>Hashtag Protocol</h1>

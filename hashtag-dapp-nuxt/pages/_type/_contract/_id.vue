@@ -203,14 +203,14 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import Hashtag from "../components/Hashtag";
-import Header from "../components/Header";
-import TimestampFrom from "../components/TimestampFrom";
-import { TAGS_BY_DIGITAL_ASSET, FIRST_THOUSAND_HASHTAGS } from "@/queries";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Hashtag from "~/components/Hashtag";
+import Header from "~/components/Header";
+import TimestampFrom from "~/components/TimestampFrom";
+import { TAGS_BY_DIGITAL_ASSET, FIRST_THOUSAND_HASHTAGS } from "~/queries";
 
-import HashtagValidationService from "@/services/HashtagValidationService";
+import HashtagValidationService from "~/services/HashtagValidationService";
 
 export default {
   name: "NftDetail",
@@ -221,13 +221,24 @@ export default {
     Header,
     TimestampFrom,
   },
-  data() {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData({ $content, params }) {
     return {
       activeTab: null,
-      name: this.$route.params.name,
-      type: this.$route.params.type,
-      contract: this.$route.params.contract,
-      id: this.$route.params.id,
+      name: params.name,
+      type: params.type,
+      contract: params.contract,
+      id: params.id,
       tagsByHashtag: null,
       hashtagsByName: null,
       hashtag: null,

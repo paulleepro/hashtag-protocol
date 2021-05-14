@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import MarkdownDoc from "../components/MarkdownDoc";
+import MarkdownDoc from "./MarkdownDoc";
 
 export default {
   name: "MarkdownModal",

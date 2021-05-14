@@ -231,19 +231,19 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import HashtagTokenId from "../components/HashtagTokenId";
-import Header from "../components/Header";
-import NftLink from "../components/NftLink";
-import Pagination from "../components/Pagination";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import HashtagTokenId from "~/components/HashtagTokenId";
+import Header from "~/components/Header";
+import NftLink from "~/components/NftLink";
+import Pagination from "~/components/Pagination";
 import {
   PAGED_TAGS_BY_HASHTAG,
   HASHTAGS_BY_NAME,
   ALL_TAGS_BY_HASHTAG,
-} from "../queries";
-import TimestampFrom from "../components/TimestampFrom";
-import TimestampFormatted from "../components/TimestampFormatted";
+} from "~/queries";
+import TimestampFrom from "~/components/TimestampFrom";
+import TimestampFormatted from "~/components/TimestampFormatted";
 
 const PAGE_SIZE = 10;
 
@@ -259,8 +259,19 @@ export default {
     Header,
     Pagination,
   },
-  data() {
-    let routeHashtag = this.$route.params.hashtag;
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData({ $content, params }) {
+    let routeHashtag = params.slug;
     routeHashtag = routeHashtag.replace("#", "");
     routeHashtag = routeHashtag.toLowerCase();
 

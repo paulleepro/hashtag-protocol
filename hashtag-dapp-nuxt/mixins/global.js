@@ -1,8 +1,8 @@
 import Vue from "vue";
-import HashtagProtocolTruffleConf from "../truffleconf/HashtagProtocol";
-import ERC721HashtagRegistry from "../truffleconf/ERC721HashtagRegistry";
-import utils from "../utils";
-import onBoardChainMap from "../data/onBoardChainMap.json";
+import HashtagProtocolTruffleConf from "~/truffleconf/HashtagProtocol";
+import ERC721HashtagRegistry from "~/truffleconf/ERC721HashtagRegistry";
+import utils from "~/utils";
+import onBoardChainMap from "~/data/onBoardChainMap.json";
 // import AppConfig from "@/appconfig";
 
 const chainID = process.env.onboardNetworkId; // Vue.appConfig.hashtagSubgraph;

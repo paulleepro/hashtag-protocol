@@ -1,11 +1,11 @@
 <template>
-  <div class="body auction">
+  <div class="body">
     <Header />
     <section class="main">
       <div class="container">
-        <h1 class="title is-1">Creators</h1>
+        <h1 class="title is-1">Publishers</h1>
         <h2 class="subtitle">
-          Hashtag Creators
+          Hashtag Protocol Publishers
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
             <router-link :to="{ name: 'dashboard' }">Dashboard</router-link
             >&nbsp;
@@ -27,7 +27,7 @@
                         <!---->
                         <th class="">
                           <div class="th-wrap">
-                            Creator
+                            Publisher
                             <!---->
                           </div>
                         </th>
@@ -54,29 +54,32 @@
                       <!---->
                       <!---->
                     </thead>
-                    <tbody v-if="pagedCreators">
+                    <tbody v-if="pagedPublishers">
                       <tr
                         draggable="false"
                         class=""
-                        v-for="creator in pagedCreators"
-                        v-bind:key="creator.id"
+                        v-for="publisher in pagedPublishers"
+                        v-bind:key="publisher.id"
                       >
                         <!---->
                         <!---->
                         <td data-label="Owner" class="">
                           <eth-account
-                            :value="creator.id"
-                            route="creator-detail"
+                            :value="publisher.id"
+                            route="publisher-detail"
                           ></eth-account>
                         </td>
                         <td data-label="Hashtags" class="has-text-centered">
-                          {{ creator.mintCount }}
+                          {{ publisher.mintCount }}
                         </td>
                         <td data-label="Tag count" class="has-text-centered">
-                          {{ creator.tagCount }}
+                          {{ publisher.tagCount }}
                         </td>
                         <td data-label="Revenue" class="has-text-centered">
-                          <eth-amount :value="creator.tagFees"></eth-amount>
+                          <eth-amount-sum
+                            :value1="publisher.mintFees"
+                            :value2="publisher.tagFees"
+                          ></eth-amount-sum>
                         </td>
                         <!---->
                       </tr>
@@ -88,7 +91,7 @@
                 <!---->
               </div>
               <Pagination
-                :entity-count="creatorsCount"
+                :entity-count="publishersCount"
                 :page-size="pageSize"
                 @tabSelected="tabSelected"
               />
@@ -102,23 +105,34 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import EthAmount from "../components/EthAmount";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Pagination from "../components/Pagination";
-import { PAGED_CREATORS, ALL_CREATORS } from "@/queries";
+import EthAccount from "~/components/EthAccount";
+import EthAmountSum from "~/components/EthAmountSum";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
+import Pagination from "~/components/Pagination";
+import { PAGED_PUBLISHERS, ALL_PUBLISHERS } from "~/queries";
 
 const PAGE_SIZE = 10;
 
 export default {
   name: "Nfts",
   components: {
-    EthAmount,
+    EthAmountSum,
     EthAccount,
     Footer,
     Header,
     Pagination,
+  },
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
   },
   data() {
     return {
@@ -126,12 +140,12 @@ export default {
       pageSize: PAGE_SIZE,
       first: PAGE_SIZE,
       skip: 0,
-      creatorsCount: 0,
+      publishersCount: 0,
     };
   },
   apollo: {
-    pagedCreators: {
-      query: PAGED_CREATORS,
+    pagedPublishers: {
+      query: PAGED_PUBLISHERS,
       variables() {
         return {
           first: this.first,
@@ -139,11 +153,11 @@ export default {
         };
       },
     },
-    creatorsCount: {
-      query: ALL_CREATORS,
+    publishersCount: {
+      query: ALL_PUBLISHERS,
       manual: true,
       result({ data }) {
-        this.creatorsCount = data.creators.length;
+        this.publishersCount = data.publishers.length;
       },
     },
   },

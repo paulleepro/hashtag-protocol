@@ -232,22 +232,22 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import EthAccount from "~/components/EthAccount";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
 import {
   PAGED_HASHTAGS_BY_CREATOR,
   CREATOR_BY_ACC,
   PAGED_TAGS_BY_TAGGER,
   ALL_TAG_IDS_BY_TAGGER,
   ALL_HASHTAG_IDS_BY_CREATOR,
-} from "../queries";
-import EthAmount from "../components/EthAmount";
-import EthAmountSum from "../components/EthAmountSum";
-import Hashtag from "../components/Hashtag";
-import TimestampFrom from "../components/TimestampFrom";
-import NftLink from "../components/NftLink";
-import Pagination from "../components/Pagination";
+} from "~/queries";
+import EthAmount from "~/components/EthAmount";
+import EthAmountSum from "~/components/EthAmountSum";
+import Hashtag from "~/components/Hashtag";
+import TimestampFrom from "~/components/TimestampFrom";
+import NftLink from "~/components/NftLink";
+import Pagination from "~/components/Pagination";
 
 const PAGE_SIZE = 10;
 
@@ -264,13 +264,24 @@ export default {
     Pagination,
     TimestampFrom,
   },
-  data() {
+  head() {
+    return {
+      title: '',
+      meta: [
+        {
+        hid: 'description',
+        name: 'description',
+        content: '' }
+      ],
+    }
+  },
+  asyncData({ $content, params }) {
     return {
       activeTab: null,
       isOwnerInfoModalActive: false,
       isMarketSummaryActive: false,
       isActivityModalActive: false,
-      creator: this.$route.params.address,
+      creator: params.slug,
       tagsByHashtag: null,
       hashtagsByName: null,
       hashtagsTab: {

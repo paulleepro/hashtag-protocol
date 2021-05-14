@@ -4,11 +4,11 @@ import { ethers } from "ethers";
 import Onboard from "bnc-onboard";
 import BlocknativeSdk from "bnc-sdk";
 import { ToastProgrammatic as Toast } from "buefy";
-import HashtagProtocolTruffleConf from "../../truffleconf/HashtagProtocol";
-import ERC721HashtagRegistry from "../../truffleconf/ERC721HashtagRegistry";
-import utils from "../../utils";
-import eventMap from "../../data/blocknativeEventMap";
-import onBoardChainMap from "../../data/onBoardChainMap";
+import HashtagProtocolTruffleConf from "~/truffleconf/HashtagProtocol";
+import ERC721HashtagRegistry from "~/truffleconf/ERC721HashtagRegistry";
+import utils from "~/utils";
+import eventMap from "~/data/blocknativeEventMap";
+import onBoardChainMap from "~/data/onBoardChainMap";
 
 let provider;
 let onboard = {};
