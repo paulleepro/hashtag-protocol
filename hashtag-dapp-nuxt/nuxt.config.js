@@ -11,14 +11,19 @@ export default {
       { hid: 'description', name: 'description', content: 'An experimental content tagging protocol for the decentralized internet.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href:"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"},
+      { rel: 'stylesheet', href:"https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/css/theme',
+    // 'bulma',
+    // '@creativebulma/bulma-divider',
+    // '~/node_modules/bulma/sass/utilities/_all',
     '~/assets/css/variables',
+    '~/assets/css/theme',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -44,7 +49,24 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    // '@nuxtjs/style-resources',
+    '@nuxtjs/apollo',
   ],
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000',
+      }
+    }
+  },
+
+  // styleResources: {
+  //   scss: [
+  //     '~/assets/css/variables.scss',
+  //     '~/assets/css/theme.scss',
+  //   ]
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
