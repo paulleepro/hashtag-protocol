@@ -49,7 +49,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
-    // '@nuxtjs/style-resources',
+    '@nuxtjs/style-resources',
     '@nuxtjs/apollo',
   ],
 
@@ -61,12 +61,11 @@ export default {
     }
   },
 
-  // styleResources: {
-  //   scss: [
-  //     '~/assets/css/variables.scss',
-  //     '~/assets/css/theme.scss',
-  //   ]
-  // },
+  styleResources: {
+    scss: [
+      '~/assets/css/*.scss',
+    ]
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
