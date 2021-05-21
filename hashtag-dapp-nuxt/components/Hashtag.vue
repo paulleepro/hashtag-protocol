@@ -1,8 +1,8 @@
 <template>
   <span class="has-text-weight-bold">
-    <router-link :to="{ name: 'hashtag-detail', params: { hashtag: dest } }">
+    <nuxt-link :to="{ name: 'hashtag-detail', params: { hashtag: dest } }">
       {{ value }}
-    </router-link>
+    </nuxt-link>
   </span>
 </template>
 

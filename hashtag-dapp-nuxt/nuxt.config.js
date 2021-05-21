@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,6 +45,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -65,6 +68,14 @@ export default {
     scss: [
       '~/assets/css/*.scss',
     ]
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.NUXT_ENV_HASHTAG_SUBGRAPH_URL
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

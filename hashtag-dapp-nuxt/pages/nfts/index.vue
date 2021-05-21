@@ -7,7 +7,7 @@
         <h2 class="subtitle">
           Content tagged with Hashtag Tokens
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <router-link :to="{ name: 'dashboard' }">Dashboard</router-link
+            <nuxt-link :to="{ name: 'dashboard' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -48,7 +48,7 @@
                         v-bind:key="tag.id"
                       >
                         <td class="has-text-centered">
-                          <router-link
+                          <nuxt-link
                             :to="{
                               name: 'nft-detail',
                               params: {
@@ -63,7 +63,7 @@
                               :alt="tag.nftName"
                               class="nft-thumb"
                             />
-                          </router-link>
+                          </nuxt-link>
                         </td>
                         <td data-label="Asset Name">
                           <nft-link

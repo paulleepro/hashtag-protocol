@@ -45,8 +45,8 @@
                     >
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'hashtags' }"
-                            >Browse hashtags </router-link
+                          <nuxt-link to="/hashtags"
+                            >Browse hashtags </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -106,8 +106,8 @@
                     <b-table :data="tags || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'nfts' }"
-                            >Browse tagged assets </router-link
+                          <nuxt-link to="/nfts"
+                            >Browse tagged assets </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -119,7 +119,7 @@
                       </template>
                       <template slot-scope="props">
                         <b-table-column field="nftId" centered>
-                          <router-link
+                          <!-- <nuxt-link
                             :to="{
                               name: 'nft-detail',
                               params: {
@@ -134,7 +134,7 @@
                               :alt="props.row.nftName"
                               class="nft-thumb"
                             />
-                          </router-link>
+                          </nuxt-link> -->
                         </b-table-column>
                         <b-table-column field="nftName" label="Asset Name">
                           <nft-link
@@ -181,8 +181,8 @@
                     <b-table :data="creators || []">
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'creators' }"
-                            >Browse creators </router-link
+                          <nuxt-link to="/creators"
+                            >Browse creators </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -241,8 +241,8 @@
                     <b-table :data="publishers || []">
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'publishers' }"
-                            >Browse publishers </router-link
+                          <nuxt-link to="/publishers"
+                            >Browse publishers </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -305,8 +305,8 @@
                     <b-table :data="taggers || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'taggers' }"
-                            >Browse taggers </router-link
+                          <nuxt-link to="/taggers"
+                            >Browse taggers </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -351,8 +351,8 @@
                     <b-table :data="popular || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <router-link :to="{ name: 'hashtags' }"
-                            >Browse hashtags </router-link
+                          <nuxt-link to="/hashtags"
+                            >Browse hashtags </nuxt-link
                           >&nbsp;
                           <b-icon
                             icon="arrow-right"
@@ -414,20 +414,20 @@
 </template>
 
 <script>
-import EthAccount from "../components/EthAccount";
-import EthAmount from "../components/EthAmount";
-import Footer from "../components/Footer";
-import Hashtag from "../components/Hashtag";
-import Header from "../components/Header";
-import MarkdownModal from "../components/MarkdownModal";
-import Mint from "../components/Mint";
-import MintAndTag from "../components/MintAndTag";
-import NftLink from "../components/NftLink";
-import PseudoOwners from "../components/PseudoOwners";
+import EthAccount from "~/components/EthAccount";
+import EthAmount from "~/components/EthAmount";
+import Footer from "~/components/Footer";
+import Hashtag from "~/components/Hashtag";
+import Header from "~/components/Header";
+import MarkdownModal from "~/components/MarkdownModal";
+import Mint from "~/components/Mint";
+import MintAndTag from "~/components/MintAndTag";
+import NftLink from "~/components/NftLink";
+import PseudoOwners from "~/components/PseudoOwners";
 
-import { SNAPSHOT, FIRST_THOUSAND_HASHTAGS } from "../queries";
+import { SNAPSHOT, FIRST_THOUSAND_HASHTAGS } from "~/queries";
 //import { mapGetters } from "vuex";
-import TimestampFrom from "../components/TimestampFrom";
+import TimestampFrom from "~/components/TimestampFrom";
 //import HashtagValidationService from "@/services/HashtagValidationService";
 //import debounce from "lodash/debounce";
 

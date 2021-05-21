@@ -11,7 +11,7 @@
             >COMING SOON!</span
           >
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <router-link :to="{ name: 'dashboard' }">Dashboard</router-link
+            <nuxt-link :to="{ name: 'dashboard' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>

@@ -7,8 +7,8 @@
         <h2 class="subtitle">
           ERC-721 Digital asset
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <router-link :to="{ name: 'nfts' }"
-              >Browse tagged assets</router-link
+            <nuxt-link :to="{ name: 'nfts' }"
+              >Browse tagged assets</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>

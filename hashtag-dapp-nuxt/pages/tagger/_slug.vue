@@ -9,7 +9,7 @@
         <h2 class="subtitle">
           Hashtag Protocol Tagger
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <router-link :to="{ name: 'taggers' }">Browse taggers</router-link
+            <nuxt-link :to="{ name: 'taggers' }">Browse taggers</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -119,7 +119,7 @@
                         <tbody>
                           <tr v-for="tag in tagsByTagger" v-bind:key="tag.id">
                             <td class="has-text-centered">
-                              <router-link
+                              <nuxt-link
                                 :to="{
                                   name: 'nft-detail',
                                   params: {
@@ -134,7 +134,7 @@
                                   :alt="tag.nftName"
                                   class="nft-thumb"
                                 />
-                              </router-link>
+                              </nuxt-link>
                             </td>
                             <td data-label="Asset Name" class="">
                               <nft-link

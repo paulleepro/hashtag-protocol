@@ -7,8 +7,8 @@
         <h2 class="subtitle">
           Hashtag Protocol Publisher
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <router-link :to="{ name: 'publishers' }"
-              >Browse publishers</router-link
+            <nuxt-link :to="{ name: 'publishers' }"
+              >Browse publishers</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -249,7 +249,7 @@
                             v-bind:key="tag.id"
                           >
                             <td class="has-text-centered">
-                              <router-link
+                              <nuxt-link
                                 :to="{
                                   name: 'nft-detail',
                                   params: {
@@ -264,7 +264,7 @@
                                   :alt="tag.nftName"
                                   class="nft-thumb"
                                 />
-                              </router-link>
+                              </nuxt-link>
                             </td>
                             <td data-label="Asset Name" class="">
                               <nft-link
