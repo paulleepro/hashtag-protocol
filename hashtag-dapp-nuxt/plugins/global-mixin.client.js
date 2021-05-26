@@ -5,7 +5,7 @@ import ERC721HashtagRegistry from "~/truffleconf/ERC721HashtagRegistry";
 import utils from "~/utils";
 import onBoardChainMap from "~/data/onBoardChainMap.json";
 
-const chainID = process.env.onboardNetworkID; // Vue.appConfig.hashtagSubgraph;
+const chainID = process.env.onboardNetworkID;
 
 if (!Vue.__my_mixin__) {
   Vue.__my_mixin__ = true
