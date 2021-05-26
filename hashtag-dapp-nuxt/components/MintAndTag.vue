@@ -241,7 +241,7 @@ export default {
     }, 300),
     async tagNft() {
       if (this.modalForm.mintAndTag) {
-        await this.$store.dispatch("mintAndTag", {
+        await this.$store.dispatch("wallet/mintAndTag", {
           hashtag: this.modalForm.hashtag[0],
           nftContract: this.modalForm.nft.contractAddress,
           nftId: this.modalForm.nft.tokenId,
@@ -258,7 +258,7 @@ export default {
           (tag) => tag.name.toLowerCase() === hashtagValue.toLowerCase()
         );
 
-        await this.$store.dispatch("tag", {
+        await this.$store.dispatch("wallet/tag", {
           hashtagId: findExistingHashtagResult[0].id,
           nftContract: this.modalForm.nft.contractAddress,
           nftId: this.modalForm.nft.tokenId,
@@ -294,7 +294,7 @@ export default {
       return false;
     },
     mintHashtag() {
-      this.$store.dispatch("mint", `#${this.hashtagInput[0]}`);
+      this.$store.dispatch("wallet/mint", `#${this.hashtagInput[0]}`);
     },
     onNftSelected(nft) {
       this.modalForm.nft = nft;

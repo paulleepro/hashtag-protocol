@@ -64,11 +64,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["address", "balance", "wallet", "networkId", "networkInfo"]),
+    ...mapGetters(["wallet/address", "wallet/balance", "wallet/wallet", "wallet/networkId", "wallet/networkInfo"]),
   },
   methods: {
     disconnectWallet() {
-      this.$store.dispatch("disconnectWallet");
+      this.$store.dispatch("wallet/disconnectWallet");
     },
   },
   async created() {

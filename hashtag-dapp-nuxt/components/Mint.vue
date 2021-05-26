@@ -115,7 +115,7 @@ export default {
       return false;
     },
     mintHashtag() {
-      this.$store.dispatch("mint", `#${this.hashtagInput[0]}`);
+      this.$store.dispatch("wallet/mint", `#${this.hashtagInput[0]}`);
     },
     validateTag(hashtag) {
       return this.hashtagValidationService.validateTag(hashtag);

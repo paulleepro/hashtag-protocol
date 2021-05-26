@@ -24,11 +24,11 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["address", "accrued"]),
+    ...mapGetters(["wallet/address", "wallet/accrued"]),
   },
   methods: {
     drawDownFromRegistry() {
-      this.$store.dispatch("drawDownFromRegistry");
+      this.$store.dispatch("wallet/drawDownFromRegistry");
     },
   },
 };

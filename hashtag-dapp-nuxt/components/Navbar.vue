@@ -198,7 +198,7 @@ export default {
   beforeDestroy() {
     this.unsubscribe?.();
   },
-  computed: mapGetters(["accrued", "balance", "address", "onboard", "wallet"]),
+  computed: mapGetters(["wallet/accrued", "wallet/balance", "wallet/address", "onboard", "wallet/wallet"]),
   methods: {
     async initOnboard() {
       await this.$store.dispatch("wallet/initOnboard");

@@ -260,7 +260,7 @@ export default {
   methods: {
     async tagNft() {
       if (this.mintAndTag) {
-        await this.$store.dispatch("mintAndTag", {
+        await this.$store.dispatch("wallet/mintAndTag", {
           hashtag: `#${this.hashtag[0]}`,
           nftContract: this.tagsByDigitalAsset[0].nftContract,
           nftId: this.tagsByDigitalAsset[0].nftId,
@@ -277,7 +277,7 @@ export default {
           (option) => option.name.toLowerCase() === hashtagValue.toLowerCase()
         );
 
-        await this.$store.dispatch("tag", {
+        await this.$store.dispatch("wallet/tag", {
           hashtagId: findExistingHashtagResult[0].id,
           nftContract: this.tagsByDigitalAsset[0].nftContract,
           nftId: this.tagsByDigitalAsset[0].nftId,
