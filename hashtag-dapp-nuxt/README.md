@@ -1,4 +1,4 @@
-# hashtag-dapp-nuxt
+# dapp-nuxt
 
 ## Build Setup
 

@@ -1,7 +1,7 @@
 <template>
   <b-navbar :transparent="true">
     <template slot="brand">
-      <b-navbar-item :href="this.app">
+      <b-navbar-item href="https://app.hashtag-protocol.org">
         <img
           src="~/assets/logo-white.svg"
           alt="Content tagging for the decentralized web"
@@ -42,7 +42,7 @@
       </b-navbar-item>
       <b-navbar-dropdown
         class="is-hidden-desktop is-hidden-tablet-only mobile-menu"
-        arrowless="true"
+        :arrowless="true"
       >
         <b-navbar-item
           v-for="(value, key) in sectionsMenuArr"
@@ -163,7 +163,7 @@ export default {
         },
         discord: {
           text: "Discord",
-          path: this.$appConfig.discordServer,
+          path: this.discordServer,
         },
         substack: {
           text: "Substack",
@@ -196,21 +196,21 @@ export default {
     this.initOnboard();
   },
   beforeDestroy() {
-    this.unsubscribe();
+    this.unsubscribe?.();
   },
   computed: mapGetters(["accrued", "balance", "address", "onboard", "wallet"]),
   methods: {
     async initOnboard() {
-      await this.$store.dispatch("initOnboard");
+      await this.$store.dispatch("wallet/initOnboard");
     },
     async initProtocol() {
-      await this.$store.dispatch("initProtocol");
+      await this.$store.dispatch("wallet/initProtocol");
     },
     async connectWallet() {
-      await this.$store.dispatch("connectWallet");
+      await this.$store.dispatch("wallet/connectWallet");
     },
     async disconnectWallet() {
-      await this.$store.dispatch("disconnectWallet");
+      await this.$store.dispatch("wallet/disconnectWallet");
     },
     walletInfo() {
       const result = this.$buefy.modal.open({
@@ -221,10 +221,10 @@ export default {
         trapFocus: true,
         width: 550,
       });
-      this.$store.dispatch("captureOpenModalCloseFn", result.close);
+      this.$store.dispatch("wallet/captureOpenModalCloseFn", result.close);
     },
     setCurrentMenu() {
-      this.currentMenu = this.$data.sectionsMenuArr[this.section].text;
+      this.currentMenu = this.$data.sectionsMenuArr[this.section]?.text;
     },
     drawdown() {
       const result = this.$buefy.modal.open({
@@ -236,7 +236,7 @@ export default {
         width: 550,
       });
 
-      this.$store.dispatch("captureOpenModalCloseFn", result.close);
+      this.$store.dispatch("wallet/captureOpenModalCloseFn", result.close);
     },
   },
 };

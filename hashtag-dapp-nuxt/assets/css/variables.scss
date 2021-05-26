@@ -6,47 +6,38 @@ $primary: #24ae60;
 $primary-invert: findColorInvert($primary);
 $primary-light: findLightColor($primary);
 
-$colors: (
-  "white": (
-    $white,
+$colors: ("white": ($white,
     $black,
   ),
-  "black": (
-    $black,
+  "black": ($black,
     $white,
   ),
-  "light": (
-    $light,
+  "light": ($light,
     $light-invert,
   ),
-  "dark": (
-    $dark,
+  "dark": ($dark,
     $dark-invert,
   ),
-  "primary": (
-    $primary,
+  "primary": ($primary,
     $primary-invert,
   ),
-  "info": (
-    $info,
+  "info": ($info,
     $info-invert,
   ),
-  "success": (
-    $success,
+  "success": ($success,
     $success-invert,
   ),
-  "warning": (
-    $warning,
+  "warning": ($warning,
     $warning-invert,
   ),
-  "danger": (
-    $danger,
+  "danger": ($danger,
     $danger-invert,
   ),
 );
 
 // Update Bulma's global variables
-$family-sans-serif: "Roboto", sans-serif;
+$family-sans-serif: "Roboto",
+sans-serif;
 $body-family: $family-sans-serif;
 $body-background-color: $grey-lighter;
 $link: $primary;

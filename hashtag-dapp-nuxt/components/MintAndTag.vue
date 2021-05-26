@@ -152,7 +152,7 @@ import {
   SNAPSHOT,
   FIRST_THOUSAND_HASHTAGS,
   NFTS_ASSETS_NAME_CONTAINS,
-} from "~/queries";
+} from "~/apollo/queries";
 import { mapGetters } from "vuex";
 import HashtagValidationService from "~/services/HashtagValidationService";
 import debounce from "lodash/debounce";

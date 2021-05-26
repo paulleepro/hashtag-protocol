@@ -178,6 +178,7 @@ export default {
   },
   mounted() {
     // Sets the currently active dropdown menu.
+    console.log('this.app: ==========', this.app)
     this.setCurrentMenu();
     // Start a mutation subscriber to watch for
     // an initialized/changed wallet address.

@@ -7,7 +7,7 @@
         <h2 class="subtitle">
           Hashtag Protocol Taggers
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <nuxt-link to="/">Dashboard</nuxt-link
+            <nuxt-link :to="{ name: 'index' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -54,7 +54,7 @@
                         <td data-label="Tagger" class="">
                           <eth-account
                             :value="tagger.id"
-                            route="tagger-detail"
+                            route="tagger-address"
                           ></eth-account>
                         </td>
                         <td data-label="Tag count" class="has-text-centered">
@@ -88,7 +88,7 @@ import EthAccount from "~/components/EthAccount";
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import Pagination from "~/components/Pagination";
-import { PAGED_TAGGERS, ALL_TAGGERS } from "~/queries";
+import { PAGED_TAGGERS, ALL_TAGGERS } from "~/apollo/queries";
 
 const PAGE_SIZE = 10;
 
@@ -100,18 +100,7 @@ export default {
     Header,
     Pagination,
   },
-  head() {
-    return {
-      title: '',
-      meta: [
-        {
-        hid: 'description',
-        name: 'description',
-        content: '' }
-      ],
-    }
-  },
-  asyncData() {
+  data() {
     return {
       activeTab: null,
       pageSize: PAGE_SIZE,

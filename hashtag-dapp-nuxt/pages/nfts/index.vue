@@ -7,7 +7,7 @@
         <h2 class="subtitle">
           Content tagged with Hashtag Tokens
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <nuxt-link :to="{ name: 'dashboard' }">Dashboard</nuxt-link
+            <nuxt-link :to="{ name: 'index' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -50,7 +50,7 @@
                         <td class="has-text-centered">
                           <nuxt-link
                             :to="{
-                              name: 'nft-detail',
+                              name: 'type-contract-id',
                               params: {
                                 type: 'nft',
                                 contract: tag.nftContract,
@@ -87,7 +87,7 @@
                         <td>
                           <eth-account
                             :value="tag.publisher"
-                            route="publisher-detail"
+                            route="publisher-address"
                           ></eth-account>
                         </td>
                       </tr>
@@ -117,7 +117,7 @@ import Header from "~/components/Header";
 import NftLink from "~/components/NftLink";
 import Pagination from "~/components/Pagination";
 import TimestampFrom from "~/components/TimestampFrom";
-import { PAGED_TAGS, ALL_TAG_IDS } from "~/queries";
+import { PAGED_TAGS, ALL_TAG_IDS } from "~/apollo/queries";
 
 const PAGE_SIZE = 10;
 
@@ -131,17 +131,6 @@ export default {
     NftLink,
     Pagination,
     TimestampFrom,
-  },
-  head() {
-    return {
-      title: '',
-      meta: [
-        {
-        hid: 'description',
-        name: 'description',
-        content: '' }
-      ],
-    }
   },
   data() {
     return {

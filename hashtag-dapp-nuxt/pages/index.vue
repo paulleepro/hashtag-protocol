@@ -45,7 +45,7 @@
                     >
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/hashtags"
+                          <nuxt-link :to="{ name: 'hashtags' }"
                             >Browse hashtags </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -72,7 +72,7 @@
                         >
                           <eth-account
                             :value="props.row.creator"
-                            route="creator-detail"
+                            route="creator-address"
                           ></eth-account>
                         </b-table-column>
                         <b-table-column
@@ -82,7 +82,7 @@
                         >
                           <eth-account
                             :value="props.row.publisher"
-                            route="publisher-detail"
+                            route="publisher-address"
                           ></eth-account>
                         </b-table-column>
                       </template>
@@ -106,7 +106,7 @@
                     <b-table :data="tags || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/nfts"
+                          <nuxt-link :to="{ name: 'nfts' }"
                             >Browse tagged assets </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -119,9 +119,9 @@
                       </template>
                       <template slot-scope="props">
                         <b-table-column field="nftId" centered>
-                          <!-- <nuxt-link
+                          <nuxt-link
                             :to="{
-                              name: 'nft-detail',
+                              name: 'type-contract-id',
                               params: {
                                 type: 'nft',
                                 contract: props.row.nftContract,
@@ -134,7 +134,7 @@
                               :alt="props.row.nftName"
                               class="nft-thumb"
                             />
-                          </nuxt-link> -->
+                          </nuxt-link>
                         </b-table-column>
                         <b-table-column field="nftName" label="Asset Name">
                           <nft-link
@@ -181,7 +181,7 @@
                     <b-table :data="creators || []">
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/creators"
+                          <nuxt-link :to="{ name: 'creators' }"
                             >Browse creators </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -196,7 +196,7 @@
                         <b-table-column field="id" label="Creator">
                           <eth-account
                             :value="props.row.id"
-                            route="creator-detail"
+                            route="creator-address"
                           ></eth-account>
                         </b-table-column>
                         <b-table-column
@@ -241,7 +241,7 @@
                     <b-table :data="publishers || []">
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/publishers"
+                          <nuxt-link :to="{ name: 'publishers' }"
                             >Browse publishers </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -256,7 +256,7 @@
                         <b-table-column field="id" label="Publisher">
                           <eth-account
                             :value="props.row.id"
-                            route="publisher-detail"
+                            route="publisher-address"
                           ></eth-account>
                         </b-table-column>
                         <b-table-column
@@ -305,7 +305,7 @@
                     <b-table :data="taggers || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/taggers"
+                          <nuxt-link :to="{ name: 'taggers' }"
                             >Browse taggers </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -320,7 +320,7 @@
                         <b-table-column field="id" label="Tagger">
                           <eth-account
                             :value="props.row.id"
-                            route="tagger-detail"
+                            route="tagger-address"
                           ></eth-account>
                         </b-table-column>
                         <b-table-column
@@ -351,7 +351,7 @@
                     <b-table :data="popular || []" focusable>
                       <template slot="footer" v-if="!isCustom">
                         <div class="has-text-right">
-                          <nuxt-link to="/hashtags"
+                          <nuxt-link :to="{ name: 'hashtags' }"
                             >Browse hashtags </nuxt-link
                           >&nbsp;
                           <b-icon
@@ -397,7 +397,7 @@
                     <h2 class="title is-5">Top owners</h2>
                     <div class="coming-soon-img">
                       <a href="/auction"
-                        ><img src="../assets/coming-soon-banner.png"
+                        ><img src="~/assets/coming-soon-banner.png"
                       /></a>
                     </div>
                     <pseudo-owners />
@@ -425,14 +425,14 @@ import MintAndTag from "~/components/MintAndTag";
 import NftLink from "~/components/NftLink";
 import PseudoOwners from "~/components/PseudoOwners";
 
-import { SNAPSHOT, FIRST_THOUSAND_HASHTAGS } from "~/queries";
+import { SNAPSHOT, FIRST_THOUSAND_HASHTAGS } from "~/apollo/queries";
 //import { mapGetters } from "vuex";
 import TimestampFrom from "~/components/TimestampFrom";
 //import HashtagValidationService from "@/services/HashtagValidationService";
 //import debounce from "lodash/debounce";
 
 export default {
-  name: "Dashboard",
+  name: "Hashtags",
   components: {
     EthAccount,
     EthAmount,
@@ -444,17 +444,6 @@ export default {
     NftLink,
     PseudoOwners,
     TimestampFrom,
-  },
-  head() {
-    return {
-      title: '',
-      meta: [
-        {
-        hid: 'description',
-        name: 'description',
-        content: '' }
-      ],
-    }
   },
   data() {
     return {

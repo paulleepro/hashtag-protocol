@@ -7,7 +7,7 @@
         <h2 class="subtitle">
           Hashtag Creators
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <nuxt-link :to="{ name: 'dashboard' }">Dashboard</nuxt-link
+            <nuxt-link :to="{ name: 'index' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -66,7 +66,7 @@
                         <td data-label="Owner" class="">
                           <eth-account
                             :value="creator.id"
-                            route="creator-detail"
+                            route="creator-address"
                           ></eth-account>
                         </td>
                         <td data-label="Hashtags" class="has-text-centered">
@@ -107,7 +107,7 @@ import EthAmount from "~/components/EthAmount";
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import Pagination from "~/components/Pagination";
-import { PAGED_CREATORS, ALL_CREATORS } from "~/queries";
+import { PAGED_CREATORS, ALL_CREATORS } from "~/apollo/queries";
 
 const PAGE_SIZE = 10;
 
@@ -119,17 +119,6 @@ export default {
     Footer,
     Header,
     Pagination,
-  },
-  head() {
-    return {
-      title: '',
-      meta: [
-        {
-        hid: 'description',
-        name: 'description',
-        content: '' }
-      ],
-    }
   },
   data() {
     return {

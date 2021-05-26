@@ -1,6 +1,6 @@
 <template>
   <span class="has-text-weight-bold">
-    <nuxt-link :to="{ name: 'hashtag-detail', params: { hashtag: dest } }">
+    <nuxt-link :to="{ name: 'hashtag-hashtag', params: { hashtag: dest } }">
       {{ value }}
     </nuxt-link>
   </span>

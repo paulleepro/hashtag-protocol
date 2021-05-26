@@ -11,7 +11,7 @@
             >COMING SOON!</span
           >
           <span class="is-pulled-right is-size-6 has-text-weight-bold">
-            <nuxt-link :to="{ name: 'dashboard' }">Dashboard</nuxt-link
+            <nuxt-link :to="{ name: 'index' }">Dashboard</nuxt-link
             >&nbsp;
             <b-icon icon="arrow-up" type="is-dark" size="is-small"></b-icon>
           </span>
@@ -34,7 +34,7 @@
               </p>
 
               <div class="coming-soon-img is-hidden-touch">
-                <img src="../../assets/coming-soon-banner.png" />
+                <img src="~/assets/coming-soon-banner.png" />
               </div>
             </article>
           </div>
@@ -46,22 +46,11 @@
 </template>
 
 <script>
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import MarkdownDoc from "../../components/MarkdownDoc";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
+import MarkdownDoc from "~/components/MarkdownDoc";
 
 export default {
-  head() {
-    return {
-      title: '',
-      meta: [
-        {
-        hid: 'description',
-        name: 'description',
-        content: '' }
-      ],
-    }
-  },
   name: "Nfts",
   components: {
     Footer,

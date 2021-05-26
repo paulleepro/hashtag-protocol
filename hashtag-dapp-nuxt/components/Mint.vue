@@ -70,7 +70,7 @@
   </section>
 </template>
 <script>
-import { FIRST_THOUSAND_HASHTAGS } from "~/queries";
+import { FIRST_THOUSAND_HASHTAGS } from "~/apollo/queries";
 import HashtagValidationService from "~/services/HashtagValidationService";
 
 export default {

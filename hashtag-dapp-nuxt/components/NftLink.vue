@@ -2,7 +2,7 @@
   <span class="has-text-weight-bold">
     <nuxt-link
       :to="{
-        name: 'nft-detail',
+        name: 'type-contract-id',
         params: { type: type, contract: contract, id: id },
       }"
     >
