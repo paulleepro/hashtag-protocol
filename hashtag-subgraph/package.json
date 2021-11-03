@@ -11,7 +11,7 @@
     "remove:local": "graph remove --node http://localhost:8020/ hashtag-protocol/hashtag-local",
     "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 hashtag-protocol/hashtag-local --version-label dev",
     "deploy:mumbai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hashtag-protocol/hashtag-polygon-mumbai",
-    "redeploy:local": "yarn codegen:dev && yarn deploy-local"
+    "redeploy:local": "yarn codegen:local && yarn deploy:local"
   },
   "dependencies": {},
   "devDependencies": {
