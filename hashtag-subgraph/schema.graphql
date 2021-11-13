@@ -115,6 +115,7 @@ type Tag_v2 @entity {
   tagger: Tagger_v2!
   publisher: Publisher_v2!
   target: Target_v2!
+  hashtagName: String!
 }
 
 type Publisher_v2 @entity {

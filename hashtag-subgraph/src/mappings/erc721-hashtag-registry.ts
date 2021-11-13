@@ -193,6 +193,7 @@ export function handleHashtagRegistered(event: HashtagRegistered): void {
   let tagEntity_v2 = new Tag_v2(event.transaction.hash.toHexString());
   tagEntity_v2.hashtag = hashtag_v2.id;
   tagEntity_v2.target = nft_v2.id;
+  tagEntity_v2.hashtagName = hashtag_v2.hashtag;
 
   
 
