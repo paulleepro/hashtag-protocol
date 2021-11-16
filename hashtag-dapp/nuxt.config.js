@@ -1,6 +1,4 @@
 import onBoardChainMap from "./data/onBoardChainMap.json";
-import HashtagProtocolTruffleConf from "./abis/HashtagProtocol";
-import ERC721HashtagRegistry from "./abis/ERC721HashtagRegistry";
 import utils from "./common/utils";
 
 export default {
@@ -33,7 +31,7 @@ export default {
     "~/plugins/vue-axios",
     "~/plugins/vue-buefy",
     "~/plugins/vue-filter",
-    "~/plugins/vue-moment",
+    "~/plugins/vue-timeago",
     "~/plugins/vue-screen",
     "~/plugins/htp-metadata-api",
     "~/plugins/fallback-image",
@@ -61,12 +59,9 @@ export default {
   },
 
   publicRuntimeConfig: {
-    hashtagProtocolContractAddress: utils.getContractAddressFromTruffleConf(
-      HashtagProtocolTruffleConf,
-      process.env.VUE_APP_ONBOARD_NETWORK_ID,
-    ),
-    erc721HashtagRegistryAddress: utils.getContractAddressFromTruffleConf(
-      ERC721HashtagRegistry,
+    hashtagProtocolContractAddress: utils.getContractAddress("HashtagProtocol", process.env.VUE_APP_ONBOARD_NETWORK_ID),
+    erc721HashtagRegistryAddress: utils.getContractAddress(
+      "ERC721HashtagRegistry",
       process.env.VUE_APP_ONBOARD_NETWORK_ID,
     ),
     hashtagSubgraph:
@@ -76,7 +71,7 @@ export default {
       process.env.VUE_APP_TOP_NFTS_SUBGRAPH_URL || "https://api.thegraph.com/subgraphs/name/blockrockettech/nft-tokens",
     nftPortAPIKey: process.env.NFTPORT_API_KEY,
 
-    // These are set for development purposes only. See store/index.js
+    // These are set for local development purposes only. See store/index.js
     metadataApiBaseUrl: process.env.VUE_APP_HTP_METADATA_API_URL || false,
     websiteBaseUrl: process.env.VUE_APP_WEBSITE_URL || "https://www.hashtag-protocol.org",
     dappBaseUrl: process.env.VUE_APP_DAPP_URL || "https://app.hashtag-protocol.org",

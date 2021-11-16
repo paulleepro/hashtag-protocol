@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x4a9B519C355568c0aF543c7B476b2d7A8E149fBb"
       abi: HashtagProtocol
-      startBlock: 0
+      startBlock: 6
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -28,7 +28,7 @@ dataSources:
     source:
       address: "0xfbB214DF2555385BE124879E89f26AB9BbFBB333"
       abi: ERC721HashtagRegistry
-      startBlock: 0
+      startBlock: 8
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -50,7 +50,7 @@ dataSources:
     source:
       address: "0x6EE65971E81b4c11A0b0c30172EdBCda4c2E3210"
       abi: HashtagAccessControls
-      startBlock: 0
+      startBlock: 2
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
