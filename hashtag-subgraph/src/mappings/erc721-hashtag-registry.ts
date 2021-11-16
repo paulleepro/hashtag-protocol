@@ -21,6 +21,7 @@ import {
   extractNftIPFSMetadata,
 } from "../utils/helpers";
 
+
 /*
  * Track the tagging of an NFT asset
  *

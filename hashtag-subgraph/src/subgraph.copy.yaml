@@ -4,9 +4,9 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: HashtagProtocol
-    network: mumbai
+    network: mainnet
     source:
-      address: "0x4a9B519C355568c0aF543c7B476b2d7A8E149fBb"
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
       abi: HashtagProtocol
       startBlock: 0
     mapping:
@@ -24,9 +24,9 @@ dataSources:
       file: ./src/mappings/protocol-mapping.ts
   - kind: ethereum/contract
     name: ERC721HashtagRegistry
-    network: mumbai
+    network: mainnet
     source:
-      address: "0xfbB214DF2555385BE124879E89f26AB9BbFBB333"
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
       abi: ERC721HashtagRegistry
       startBlock: 0
     mapping:
@@ -46,9 +46,9 @@ dataSources:
       file: ./src/mappings/erc721-hashtag-registry.ts
   - kind: ethereum/contract
     name: HashtagAccessControls
-    network: mumbai
+    network: mainnet
     source:
-      address: "0x6EE65971E81b4c11A0b0c30172EdBCda4c2E3210"
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
       abi: HashtagAccessControls
       startBlock: 0
     mapping:
