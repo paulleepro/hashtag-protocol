@@ -41,12 +41,14 @@
         </div>
       </section>
     </div>
+    <Newsletter />
     <Footer />
   </div>
 </template>
 
 <script>
-import Footer from "../components/Footer";
+import Footer from "hashtag-components/src/components/Footer";
+import Newsletter from "../components/Newsletter";
 import Navbar from "../components/Navbar";
 
 export default {
@@ -54,9 +56,7 @@ export default {
   components: {
     Footer,
     Navbar,
-  },
-  data() {
-    return {};
+    Newsletter,
   },
 };
 </script>

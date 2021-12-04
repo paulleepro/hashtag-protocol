@@ -13,7 +13,9 @@
   "author": "Platform.sh",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "es6-template-strings": "^2.0.1",
     "express": "^4.17.1",
     "moment": "^2.29.1",

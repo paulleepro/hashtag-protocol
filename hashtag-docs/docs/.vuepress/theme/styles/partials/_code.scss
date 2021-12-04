@@ -143,3 +143,19 @@ $languages: "ts", "html", "md", "vue", "css", "sass", "scss", "less", "stylus", 
     content: "#{$language}";
   }
 }
+
+// Fixes conflict b/w prismjs and bulma.
+// see https://github.com/jgthms/bulma/issues/1708#issuecomment-382560341
+.content .tag, .content .number {
+  display: inline;
+  padding: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+  white-space: inherit;
+  background: inherit;
+  margin: inherit;
+}

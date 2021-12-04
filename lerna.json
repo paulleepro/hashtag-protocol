@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "hashtag-components",
+    "hashtag-dapp",
+    "hashtag-docs",
+    "hashtag-website"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent"
+}

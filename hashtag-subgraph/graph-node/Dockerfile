@@ -1,27 +1,35 @@
-FROM rust:latest
+# Full build with debuginfo for graph-node
+#
+# The expectation if that the docker build uses the parent directory as PWD
+# by running something like the following
+#   docker build --target STAGE -f docker/Dockerfile .
 
-# Replace this with the graph-node branch you want to build the image from;
-# Note: Docker Hub substitutes this automatically using our hooks/post_checkout script.
-ENV SOURCE_BRANCH "master"
+FROM rust:latest as graph-node-build
 
-# Install clang (required for dependencies)
-RUN apt-get update \
-    && apt-get install -y clang libclang-dev
+ARG COMMIT_SHA=unknown
+ARG REPO_NAME=unknown
+ARG BRANCH_NAME=unknown
+ARG TAG_NAME=unknown
 
-# Clone and build the graph-node repository
-RUN git clone https://github.com/graphprotocol/graph-node \
-    && cd graph-node \
-    && git checkout "$SOURCE_BRANCH" \
-    && cargo install --locked --path node \
-    && cd .. \
-    && rm -rf graph-node
+ADD . /graph-node
 
-# Clone and install wait-for-it
-RUN git clone https://github.com/vishnubob/wait-for-it \
-    && cp wait-for-it/wait-for-it.sh /usr/local/bin \
-    && chmod +x /usr/local/bin/wait-for-it.sh \
-    && rm -rf wait-for-it
+RUN cd /graph-node \
+ && RUSTFLAGS="-g" cargo install --locked --path node \
+ && cargo clean \
+ && objcopy --only-keep-debug /usr/local/cargo/bin/graph-node /usr/local/cargo/bin/graph-node.debug \
+ && strip -g /usr/local/cargo/bin/graph-node \
+ && strip -g /usr/local/cargo/bin/graphman \
+ && cd /usr/local/cargo/bin \
+ && objcopy --add-gnu-debuglink=graph-node.debug graph-node \
+ && echo "REPO_NAME='$REPO_NAME'" > /etc/image-info \
+ && echo "TAG_NAME='$TAG_NAME'" >> /etc/image-info \
+ && echo "BRANCH_NAME='$BRANCH_NAME'" >> /etc/image-info \
+ && echo "COMMIT_SHA='$COMMIT_SHA'" >> /etc/image-info \
+ && echo "CARGO_VERSION='$(cargo --version)'" >> /etc/image-info \
+ && echo "RUST_VERSION='$(rustc --version)'" >> /etc/image-info
 
+# The graph-node runtime image with only the executable
+FROM debian:buster-slim as graph-node
 ENV RUST_LOG ""
 ENV GRAPH_LOG ""
 ENV EARLY_LOG_CHUNK_SIZE ""
@@ -32,35 +40,51 @@ ENV postgres_host ""
 ENV postgres_user ""
 ENV postgres_pass ""
 ENV postgres_db ""
+# The full URL to the IPFS node
 ENV ipfs ""
+# The etherum network(s) to connect to. Set this to a space-separated
+# list of the networks where each entry has the form NAME:URL
 ENV ethereum ""
+# The role the node should have, one of index-node, query-node, or
+# combined-node
+ENV node_role "combined-node"
+# The name of this node
+ENV node_id "default"
+# The ethereum network polling interval  (in milliseconds)
+ENV ethereum_polling_interval ""
+
+# The location of an optional configuration file for graph-node, as
+# described in ../docs/sharding.md
+# Using a configuration file is experimental, and the file format may
+# change in backwards-incompatible ways
+ENV GRAPH_NODE_CONFIG ""
+
+# Disable core dumps; this is useful for query nodes with large caches. Set
+# this to anything to disable coredumps (via 'ulimit -c 0')
+ENV disable_core_dumps ""
 
 # HTTP port
 EXPOSE 8000
-
 # WebSocket port
 EXPOSE 8001
-
 # JSON-RPC port
 EXPOSE 8020
+# Indexing status port
+EXPOSE 8030
 
-# Start everything on startup
-ADD start-node /usr/local/bin
+RUN apt-get update \
+ && apt-get install -y libpq-dev ca-certificates netcat
 
-RUN apt-get install gawk
+ADD docker/wait_for docker/start /usr/local/bin/
+COPY --from=graph-node-build /usr/local/cargo/bin/graph-node /usr/local/cargo/bin/graphman /usr/local/bin/
+COPY --from=graph-node-build /etc/image-info /etc/image-info
+COPY docker/Dockerfile /Dockerfile
+CMD start
 
-# Wait for IPFS and Postgres to start up.
-#
-# The awk commands below take the IPFS and Postgres and extract
-# hostname:port from them. The IPFS port defaults to 443 for HTTPS
-# and 80 for HTTP. The Postgres port defaults to 5432.
-CMD wait-for-it.sh \
-      $(echo $ipfs | \
-        gawk 'match($0, /^([a-z]+:\/\/)?([^\/:]+)(:([0-9]+))?.*$/, m) { print m[2]":"(m[4] ? m[4] : (m[1] == "https://" ? 443 : 80)) }') \
-      -t 30 \
-    && wait-for-it.sh \
-         $(echo $postgres_host | \
-           gawk 'match($0, /^([a-z]+:\/\/)?([^\/:]+)(:([0-9]+))?.*$/, m) { print m[2]":"(m[4] ? m[4] : 5432) }') \
-         -t 30 \
-    && sleep 5 \
-    && start-node
+# Debug image to access core dumps
+FROM graph-node-build as graph-node-debug
+RUN apt-get update \
+ && apt-get install -y curl gdb postgresql-client
+
+COPY docker/Dockerfile /Dockerfile
+COPY docker/bin/* /usr/local/bin/

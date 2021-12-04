@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "no-empty-source": null,
+    "function-name-case": [
+      "lower",
+      {
+        "ignoreFunctions": ["/regex-as-string/", "/regex/", "non-regex"]
+      }
+    ]
+  }
+}

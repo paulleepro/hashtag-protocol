@@ -1,0 +1,9 @@
+{
+  "name": "hashtag-components",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@creativebulma/bulma-divider": "^1.1.0",
+    "buefy": "^0.8.15"
+  }
+}

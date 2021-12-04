@@ -1,0 +1,113 @@
+html, body {
+  height: 100%;
+  background-color: $footer-background-color;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.button,
+a.button:hover {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.body {
+  display: flex;  /* use the flex model */
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+  background-color: $white;
+}
+
+section {
+  flex: 1;
+
+  &.section {
+    @include until($desktop) {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+    }
+  }
+
+  &.nav {
+    padding: 0;
+  }
+}
+
+@mixin my-touch {
+  @media screen and (max-width: $navbar-breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin my-desktop {
+  @media screen and (min-width: $navbar-breakpoint) {
+    @content;
+  }
+}
+
+.container {
+  @include until($desktop) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.navbar {
+  .navbar-brand {
+    img {
+      margin-right: 0.4rem;
+    }
+
+    a.navbar-item,
+    a.navbar-item:hover {
+      color: $dark;
+      text-decoration: none;
+
+      h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .navbar-menu {
+    .navbar-end {
+      .navbar-item {
+        font-weight: 700;
+      }
+
+      a {
+        &.navbar-item {
+          padding: 0;
+          margin: 0.5rem 0.75rem;
+          border-bottom: $white 1px solid;
+          border-top: $white 1px solid;
+          &:hover {
+            text-decoration: none;
+            border-bottom: 1px solid;
+          }
+        }
+
+        &.router-link-active {
+          color: $primary;
+          border-bottom: 1px solid;
+        }
+      }
+    }
+  }
+}
+
+// Padding. This can be removed in Bulma 0.9.0
+.pt-1 {
+  padding-top: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}

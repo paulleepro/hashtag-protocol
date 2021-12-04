@@ -1,19 +1,19 @@
 {
-  "name": "hashtag-protocol-mono-repo",
-  "version": "0.1.0",
+  "name": "hashtag-protocol",
   "private": true,
+  "workspaces": [
+    "hashtag-components",
+    "hashtag-dapp",
+    "hashtag-docs",
+    "hashtag-website"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "start": "lerna run start --parallel",
+    "build": "lerna run build --parallel"
+  },
   "license": "UNLICENSED",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^7.0.0-alpha.9",
-    "prettier": "2.0.5",
-    "stylelint": "^13.6.1",
-    "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-processor-html": "^1.0.0",
-    "stylelint-scss": "^3.18.0"
-  },
-  "dependencies": {}
+    "lerna": "^4.0.0"
+  }
 }

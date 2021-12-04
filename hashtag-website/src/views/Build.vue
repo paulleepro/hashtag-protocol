@@ -67,19 +67,22 @@
         </div>
       </section>
     </div>
+    <Newsletter />
     <Footer />
   </div>
 </template>
 
 <script>
-import Footer from "../components/Footer";
+import Footer from "hashtag-components/src/components/Footer";
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
 
 export default {
   name: "Developers",
   components: {
     Footer,
     Navbar,
+    Newsletter,
   },
 };
 </script>

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Footer from "../components/Footer";
+import Footer from "hashtag-components/src/components/Footer";
 import Navbar from "../components/Navbar";
 import PageEdit from "../components/PageEdit";
 import Sidebar from "../components/Sidebar";

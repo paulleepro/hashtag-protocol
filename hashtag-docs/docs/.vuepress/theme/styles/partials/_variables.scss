@@ -6,6 +6,12 @@ $primary: #24ae60;
 $primary-invert: findColorInvert($primary);
 $primary-light: findLightColor($primary);
 
+$warning-light: findLightColor($warning);
+$warning-dark: findDarkColor($warning);
+
+$danger-light: findLightColor($danger);
+$danger-dark: findDarkColor($danger);
+
 $colors: (
   "white": (
     $white,

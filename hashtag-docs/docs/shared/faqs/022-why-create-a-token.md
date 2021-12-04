@@ -1,10 +1,7 @@
-## Why would I want to create a HASHTAG?
+## Why would I want to create a HASHTAG token?
 
-For the same reason people create and use hashtags on centralized platforms: to
-promote and increase engagement in your content by making it more easily
-discoverable both within and between decentralized web applications. Another
-use case is organizing content under one or more tags (aka. social
-bookmarking).
+First is revenue potential. Creators receive 40% of initial public auction revenue for HASHTAG tokens they mint. Token auctions are slated to begin Q4 2021.
 
-Additionally, you may want to speculate on the future value/use cases for
-hashtag strings tokenized as NFTs on a public blockchain.
+Another is to tag content with a tag that doesn't exist yet.
+
+See also "[Why tag content with HASHTAG tokens?](https://docs.hashtag-protocol.org/essentials/faqs.html#why-should-i-tag-content-with-a-hashtag)"

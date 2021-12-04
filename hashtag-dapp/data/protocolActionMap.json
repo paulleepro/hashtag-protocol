@@ -1,0 +1,23 @@
+{
+  "mintHashtag": {
+    "actionLabel": "Mint HASHTAG",
+    "txnSentMsg": "Minting in progress",
+    "txnConfirmedMsg": "Token minted",
+    "animationFile": "minting.json",
+    "ethGasLimit": 145000
+  },
+  "mintAndTagContent": {
+    "actionLabel": "Tag content",
+    "txnSentMsg": "Mint & tag in progress",
+    "txnConfirmedMsg": "Token minted & content tagged",
+    "animationFile": "minting_tagging.json",
+    "ethGasLimit": 330000
+  },
+  "tagContent": {
+    "actionLabel": "Tag content",
+    "txnSentMsg": "Content tagging in progress",
+    "txnConfirmedMsg": "Content tagged",
+    "animationFile": "tagging.json",
+    "ethGasLimit": 250000
+  }
+}

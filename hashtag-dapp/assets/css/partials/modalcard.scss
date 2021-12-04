@@ -1,0 +1,86 @@
+.modal-card {
+  border-radius: $radius-large;
+
+  .modal-card-foot {
+    justify-content: center;
+  }
+
+  &.markdown-modal {
+    h2 {
+      font-size: $size-3;
+    }
+    .modal-card-body {
+      padding: 50px;
+    }
+  }
+
+  &.transaction-modal {
+    //max-width: 960px;
+    //width: 800px;
+
+    .card {
+      @include mobile {
+        margin-bottom: 1rem;
+
+        .hashtag-search-wrapper {
+          .box {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+
+      @include from($tablet) {
+        margin-right: 2rem;
+      }
+    }
+
+    .hashtag-search-wrapper {
+      p.is-title {
+        line-height: 3rem;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+    }
+  }
+
+  &.hashtag-modal {
+    max-width: 550px;
+
+    .modal-card-title,
+    .title,
+    .subtitle {
+      color: $white;
+      width: 100%;
+    }
+
+    .modal-card-body,
+    .modal-card-foot,
+    .modal-card-head {
+      background-color: $grey-dark;
+    }
+
+    .card-content {
+      text-align: center;
+    }
+
+    .level {
+      width: 100%;
+
+      .level-item {
+        p.heading {
+          color: $white-ter;
+        }
+      }
+    }
+
+    p.address {
+      overflow: overlay;
+    }
+
+    .modal-card-foot {
+      justify-content: center;
+    }
+  }
+}

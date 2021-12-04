@@ -1,0 +1,15 @@
+!**/.eslintrc*
+*.svg
+*.ico
+*.json
+.git
+.gitignore
+*.md
+*.log
+*.lock
+.global
+.platform/local
+**/node_modules/**/*
+node_modules*
+docs/dist
+docs/tmp
