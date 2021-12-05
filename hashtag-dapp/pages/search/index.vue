@@ -27,6 +27,7 @@
     </div>
     <div class="container pt-3">
       <div class="columns is-multiline">
+        <div v-if="nftInfo.length == 0" class="notification"><p>No results found.</p></div>
         <div v-for="tag in nftInfo" v-bind:key="tag.id" class="column is-one-quarter">
           <div class="card" @click="onNftSelected(tag)">
             <div class="card-image">
@@ -112,7 +113,7 @@ export default {
       first: PAGE_SIZE,
       skip: 0,
       tagsCount: 0,
-      nftInfo: null,
+      nftInfo: [],
       searchString: null,
     };
   },
@@ -153,7 +154,7 @@ export default {
       this.$store.dispatch("wallet/captureOpenModalCloseFn", taggingModal.close);
     },
     searchTags: async function () {
-      this.nftInfo = null;
+      this.nftInfo = [];
       const headers = {
         Authorization: this.$config.nftPortAPIKey,
       };
