@@ -27,7 +27,9 @@
     </div>
     <div class="container pt-3">
       <div class="columns is-multiline">
-        <div v-if="nftInfo.length == 0" class="notification"><p>No results found.</p></div>
+        <b-notification v-if="nftInfo.length == 0 && !isLoading"
+        class="notification" :closable="false">No results found.</b-notification>
+        <b-loading v-model="isLoading" :can-cancel="true"></b-loading>
         <div v-for="tag in nftInfo" v-bind:key="tag.id" class="column is-one-quarter">
           <div class="card" @click="onNftSelected(tag)">
             <div class="card-image">
@@ -115,6 +117,7 @@ export default {
       tagsCount: 0,
       nftInfo: [],
       searchString: null,
+      isLoading: false,
     };
   },
   computed: {
@@ -155,6 +158,7 @@ export default {
     },
     searchTags: async function () {
       this.nftInfo = [];
+      this.isLoading = true;
       const headers = {
         Authorization: this.$config.nftPortAPIKey,
       };
@@ -190,7 +194,11 @@ export default {
               }
               saveInfo.push(arrInfo);
             }
+            this.isLoading = false;
             this.nftInfo = saveInfo;
+          }
+          else {
+            this.isLoading = false;
           }
         });
     },
