@@ -17,11 +17,13 @@ Please use this interface to experiment with tagging any
 NFT on Ethereum or Polygon with any hashtag string you can imagine.
 
 If the tag is unique, a HASHTAG token (itself an NFT) will be minted
-and your address is logged within it as the Creator and the platform hosting the tagging event (in this case Hashtag Protocol) will be logged as the Publisher. In the future, Creators and Publishers
+and your address is logged within it as the Creator and the platform hosting the
+tagging event (in this case Hashtag Protocol) will be logged as the Publisher.
+In the future, Creators and Publishers
 will receive a royalty if the HASHTAG token is purchased at auction.
 
-Please note, this sandbox is on Polygon Mumbai and should be used for **testing purposes only**. No tokens or
-tagging data will be migrated to Polygon Mainnet.
+Please note, this sandbox is on Polygon Mumbai and should be used for **testing
+purposes only**. No tokens or tagging data will be migrated to Polygon Mainnet.
 
 [Learn more](https://docs.hashtag-protocol.org/essentials/participants.html)
 about Publishers, Creators & Taggers, the three early market participants of the
@@ -29,11 +31,19 @@ Hashtag Protocol.
 
 ### Early adoption opportunities
 
-For Creators, you can continue to mint HASHTAG tokens using our dApp on [Ethereum Mainnet](https://app.hashtag-protocol.org/). Mind you, it usually costs over $100 in gas.
+For Creators, you can continue to mint HASHTAG tokens using our dApp on
+[Ethereum Mainnet](https://app.hashtag-protocol.org/). Mind you, it usually
+costs over $100 in gas.
 
-All HASHTAG tokens on Ethereum Mainnet will be migrated immediately prior to our launch on Polygon Mainnet. All token provenance, including hashtag string, Creator address and Publisher address, will be preserved.
+All HASHTAG tokens on Ethereum Mainnet will be migrated immediately prior to our
+launch on Polygon Mainnet. All token provenance, including hashtag string,
+Creator address and Publisher address, will be preserved.
 
-For Publishers, we are seeking three-five "launch partners" who wish to implement decentralized tagging on their platform. As early adopters, launch partners will have opportunity to be publisher of record for the highest value HASHTAG tokens. If a HASHTAG token is purchased at auction, the Publisher of record will receive a portion of the sale revenue.
+For Publishers, we are seeking three-five "launch partners" who wish to
+implement decentralized tagging on their platform. As early adopters, launch
+partners will have opportunity to be publisher of record for the highest value
+HASHTAG tokens. If a HASHTAG token is purchased at auction, the Publisher of
+record will receive a portion of the sale revenue.
 
 Learn more about [publisher revenue sharing](https://docs.hashtag-protocol.org/essentials/participants.html#publisher-phase-1-2).
 

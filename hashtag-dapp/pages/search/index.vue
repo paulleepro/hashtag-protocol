@@ -5,9 +5,9 @@
       <nav class="level search-bar">
         <!-- Left side -->
         <div class="level-left">
-          <div class="level-item" v-if="this.$route.params.value">
+          <div class="level-item" v-if="this.searchString">
             <h2 class="subtitle">
-              showing results for <strong>"{{ this.$route.params.value }}"</strong>
+              showing results for <strong>"{{ this.searchString }}"</strong>
             </h2>
           </div>
         </div>
@@ -27,6 +27,9 @@
     </div>
     <div class="container pt-3">
       <div class="columns is-multiline">
+        <b-notification v-if="nftInfo.length == 0 && !isLoading"
+        class="notification" :closable="false">No results found.</b-notification>
+        <b-loading v-model="isLoading" :can-cancel="true"></b-loading>
         <div v-for="tag in nftInfo" v-bind:key="tag.id" class="column is-one-quarter">
           <div class="card" @click="onNftSelected(tag)">
             <div class="card-image">
@@ -106,24 +109,32 @@ export default {
   components: {
     TaggingWidget,
   },
-  mounted() {
-    this.searchTags();
-  },
-  watch: {
-    $route: function (val) {
-      if (val) {
-        this.searchTags();
-      }
-    },
-  },
   data() {
     return {
       pageSize: PAGE_SIZE,
       first: PAGE_SIZE,
       skip: 0,
       tagsCount: 0,
-      nftInfo: null,
+      nftInfo: [],
+      searchString: null,
+      isLoading: false,
     };
+  },
+  computed: {
+    query() {
+      return this.$route.query.value;
+    },
+  },
+  mounted() {
+    this.searchString = this.$route.query.value;
+    this.searchTags();
+  },
+  watch: {
+    // Watch the computed function query() for changes to the query string.
+    query(newQuery) {
+      this.searchString = newQuery;
+      this.searchTags();
+    },
   },
   methods: {
     tabSelected(id) {
@@ -134,8 +145,6 @@ export default {
       await this.$store.dispatch("wallet/updateTransactionState", {
         eventCode: "taggingSelectHashtag",
       });
-      /* eslint-disable-next-line no-console */
-      console.log("onNftSelected", nft);
       const taggingModal = this.$buefy.modal.open({
         parent: this,
         component: TxnModal,
@@ -148,6 +157,8 @@ export default {
       this.$store.dispatch("wallet/captureOpenModalCloseFn", taggingModal.close);
     },
     searchTags: async function () {
+      this.nftInfo = [];
+      this.isLoading = true;
       const headers = {
         Authorization: this.$config.nftPortAPIKey,
       };
@@ -155,7 +166,7 @@ export default {
         .get("https://api.nftport.xyz/text_search", {
           params: {
             chain: "all-chains",
-            text: this.$route.params.value,
+            text: this.searchString,
             page_number: 1,
             page_size: 50,
           },
@@ -183,7 +194,11 @@ export default {
               }
               saveInfo.push(arrInfo);
             }
+            this.isLoading = false;
             this.nftInfo = saveInfo;
+          }
+          else {
+            this.isLoading = false;
           }
         });
     },
