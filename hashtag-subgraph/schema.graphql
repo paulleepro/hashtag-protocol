@@ -19,6 +19,7 @@ type Hashtag @entity {
 
 type Tag @entity {
   id: ID!
+  transaction: String!
   hashtagId: String!
   nftContract: Bytes!
   nftId: String!
@@ -111,6 +112,7 @@ type Hashtag_v2 @entity {
 
 type Tag_v2 @entity {
   id: ID!
+  transaction: String!
   hashtag: Hashtag_v2!
   tagger: Tagger_v2!
   publisher: Publisher_v2!

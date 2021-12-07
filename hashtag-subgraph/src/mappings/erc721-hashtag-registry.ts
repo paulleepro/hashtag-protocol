@@ -87,7 +87,8 @@ export function handleHashtagRegistered(event: HashtagRegistered): void {
   hashtag.save();
 
   // Store tag information
-  let tagEntity = new Tag(event.transaction.hash.toHexString());
+  let tagEntity = new Tag(event.params.tagId.toString());
+  tagEntity.transaction = event.transaction.hash.toHexString();
   tagEntity.hashtagId = hashtagId.toString();
   tagEntity.nftContract = event.params.nftContract;
   tagEntity.nftId = event.params.nftId.toString();
@@ -191,7 +192,8 @@ export function handleHashtagRegistered(event: HashtagRegistered): void {
   nft_v2.save();
 
   // Store tag information
-  let tagEntity_v2 = new Tag_v2(event.transaction.hash.toHexString());
+  let tagEntity_v2 = new Tag_v2(event.params.tagId.toString());
+  tagEntity_v2.transaction = event.transaction.hash.toHexString();
   tagEntity_v2.hashtag = hashtag_v2.id;
   tagEntity_v2.target = nft_v2.id;
   tagEntity_v2.hashtagName = hashtag_v2.hashtag;
