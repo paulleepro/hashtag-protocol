@@ -14,13 +14,13 @@ import onBoardChainMap from "~/data/onBoardChainMap";
 
 export default {
   name: "NftId",
-  props: ["value", "name", "contract", "chain"],
+  props: ["value", "contract", "chain"],
   computed: {
     tokenUrl() {
       return `${onBoardChainMap[this.chain].url}/token/${this.contract}?a=${this.value}`;
     },
     label() {
-      return `View ${this.name} on ${onBoardChainMap[this.chain].explorerName}`;
+      return `View on ${onBoardChainMap[this.chain].explorerName}`;
     },
   },
 };

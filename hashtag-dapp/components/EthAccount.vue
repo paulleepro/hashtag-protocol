@@ -1,6 +1,6 @@
 <template>
   <span class="nowrap">
-    <b-tooltip :label="value" position="is-bottom" type="is-dark">
+    <b-tooltip :label="value" position="is-top" size="is-large" type="is-dark">
       <span v-if="route">
         <nuxt-link :to="{ name: route, params: { address: value } }">
           <span v-if="ens">
@@ -20,7 +20,7 @@
         </span>
       </span>
     </b-tooltip>
-    <b-tooltip :label="`View on ${explorerName}`" position="is-bottom" type="is-dark" size="is-small">
+    <b-tooltip :label="`View on ${explorerName}`" position="is-top" type="is-dark" size="is-small">
       <a :href="this.addressUrl" target="_blank">
         <b-icon icon="ethereum" type="is-grey-light" size="is-small"> </b-icon>
       </a>

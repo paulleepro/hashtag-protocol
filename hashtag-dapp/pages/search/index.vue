@@ -27,8 +27,9 @@
     </div>
     <div class="container pt-3">
       <div class="columns is-multiline">
-        <b-notification v-if="nftInfo.length == 0 && !isLoading"
-        class="notification" :closable="false">No results found.</b-notification>
+        <b-notification v-if="nftInfo.length == 0 && !isLoading" class="notification" :closable="false"
+          >No results found.</b-notification
+        >
         <b-loading v-model="isLoading" :can-cancel="true"></b-loading>
         <div v-for="tag in nftInfo" v-bind:key="tag.id" class="column is-one-quarter">
           <div class="card" @click="onNftSelected(tag)">
@@ -196,8 +197,7 @@ export default {
             }
             this.isLoading = false;
             this.nftInfo = saveInfo;
-          }
-          else {
+          } else {
             this.isLoading = false;
           }
         });
