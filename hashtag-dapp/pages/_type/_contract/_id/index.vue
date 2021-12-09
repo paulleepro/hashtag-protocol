@@ -311,6 +311,9 @@ export default {
           nftHold["chain"] = nftData.nftChainId;
           nftHold["chainName"] = response.config.params.chain;
           nftHold["nftContract"] = nftData.nftContract;
+          //nftHold["nftContractName"] = response.data.nft.contract;
+          //nftHold["nftContractSymbol"] = response.data.nft.contract.symbol;
+          //nftHold["nftContractType"] = response.data.nft.contract.type;
           this.nftInfo = nftHold;
           this.isLoaded = true;
         });

@@ -16,6 +16,14 @@ Vue.filter("shortEth", function (value) {
   `;
 });
 
+Vue.filter("shortTxn", function (value) {
+  if (!value) return value;
+
+  return `
+  ${value.substr(0, 20)}...
+  `;
+});
+
 Vue.filter("toEth", function (value, decimals = null) {
   if (!value) return value;
   if (decimals) {
