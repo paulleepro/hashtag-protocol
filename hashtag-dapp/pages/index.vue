@@ -206,7 +206,7 @@
                     @click="
                       cardModal({
                         type: 'faqs',
-                        content: '020-what-is-hashtag-token',
+                        content: '090-top-hashtags',
                       })
                     "
                     class="mdi mdi-help-circle-outline mdi-24px is-pulled-right has-text-grey"
