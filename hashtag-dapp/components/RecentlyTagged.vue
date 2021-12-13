@@ -64,6 +64,7 @@ export default {
     return {
       data: [],
       isCustom: false,
+      tags: "",
     };
   },
   apollo: {
@@ -73,12 +74,15 @@ export default {
     },
   },
   mounted() {
-    this.pullTagsFromAPI(this.tags);
+    this.pullTagsFromAPI();
+  },
+  watch: {
+    // Watch the tags data variable for changes and call pullTagsFromAPI if it does.
+    tags: "pullTagsFromAPI",
   },
   methods: {
     pullTagsFromAPI: async function () {
-      let taggedData = await this.$apollo.queries.tags.refetch();
-      taggedData = taggedData.data.tags;
+      let taggedData = this.tags;
       const promises = [];
       const headers = {
         Authorization: this.$config.nftPortAPIKey,
